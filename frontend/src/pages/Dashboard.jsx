@@ -2,19 +2,22 @@ import React from 'react'
 import {useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
-import GoalForm from '../components/GoalForm';
-import Spinner from '../components/Spinner';
-import { getGoals } from '../features/goals/goalSlice';
+import { getPatterns } from '../features/patterns/patternSlice';
 import { reset } from '../features/auth/authSlice';
-import GoalItem from '../components/GoalItem';
+import PatternForm from '../components/PatternForm';
+import Spinner from '../components/Spinner';
 import NailPolishForm from '../components/NailPolishForm';
+import { getNailPolishes } from '../features/nailPolishes/nailPolishSlice';
+import PatternItem from '../components/PatternItem';
+import NailPolishItem from '../components/NailPolishItem';
 
 function Dashboard() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const {user} = useSelector((state) => state.auth);
-  const {goals, isLoading, isError, message} = useSelector((state) => state.goals);
+  const {patterns, isLoading, isError, message} = useSelector((state) => state.patterns);
+  const {nailPolishes} = useSelector((state => state.nailPolishes));
 
   useEffect(() => {
     if(isError) {
@@ -25,7 +28,8 @@ function Dashboard() {
       navigate('/login');
     }
 
-    dispatch(getGoals());
+    dispatch(getPatterns());
+    dispatch(getNailPolishes());
 
     return () => {
       dispatch(reset());
@@ -46,19 +50,34 @@ function Dashboard() {
 
       <NailPolishForm/>
 
-      <GoalForm/>
+      <PatternForm/>
 
       <section className="content">
-        {goals.length > 0 ?
+        {patterns.length > 0 ?
          (
-          <div className="goals">
-            {goals.map((goal) => (
-              <GoalItem key={goal._id} goal={goal} />
+          <div className="patterns">
+            {patterns.map((pattern) => (
+              <PatternItem key={pattern._id} pattern={pattern} />
             ))}
           </div>
          ) : 
          (
-          <h3>You have no goals in life</h3>
+          <h3>so unimaginative</h3>
+         )
+        }
+      </section>
+
+      <section className="content">
+        {nailPolishes.length > 0 ?
+         (
+          <div className="patterns">
+            {nailPolishes.map((nailPolish) => (
+              <NailPolishItem key={nailPolish._id} nailPolish={nailPolish} />
+            ))}
+          </div>
+         ) : 
+         (
+          <h3>go buy some nail polish</h3>
          )
         }
       </section>

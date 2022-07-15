@@ -1,20 +1,20 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-import goalService from './goalService';
+import patternService from './patternService';
 
 // Initial state
 const initialState = {
-    goals: [],
+    patterns: [],
     isError: false,
     isSuccess: false,
     isLoading: false,
     message: ''
 };
 
-// Create new goal
-export const createGoal = createAsyncThunk('goals/create', async (goalData, thunkAPI) => {
+// Create new pattern
+export const createPattern = createAsyncThunk('patterns/create', async (patternData, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token;
-        return await goalService.createGoal(goalData, token);
+        return await patternService.createPattern(patternData, token);
     }
     catch (error) {
         const message = (error.response && error.response.data && error.response.data.message)
@@ -24,11 +24,11 @@ export const createGoal = createAsyncThunk('goals/create', async (goalData, thun
     }
 });
 
-// Get goals
-export const getGoals = createAsyncThunk('goals/getAll', async (_, thunkAPI) => {
+// Get patterns
+export const getPatterns = createAsyncThunk('patterns/getAll', async (_, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token;
-        return await goalService.getGoals(token);
+        return await patternService.getPatterns(token);
     }
     catch (error) {
         const message = (error.response && error.response.data && error.response.data.message)
@@ -38,11 +38,11 @@ export const getGoals = createAsyncThunk('goals/getAll', async (_, thunkAPI) => 
     }
 });
 
-// Delete goal
-export const deleteGoal = createAsyncThunk('goals/delete', async (id, thunkAPI) => {
+// Delete pattern
+export const deletePattern = createAsyncThunk('patterns/delete', async (id, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token;
-        return await goalService.deleteGoal(id, token);
+        return await patternService.deletePattern(id, token);
     }
     catch (error) {
         const message = (error.response && error.response.data && error.response.data.message)
@@ -53,49 +53,50 @@ export const deleteGoal = createAsyncThunk('goals/delete', async (id, thunkAPI) 
 });
 
 // Slice
-export const goalSlice = createSlice({
-    name: 'goal',
+export const patternSlice = createSlice({
+    name: 'pattern',
     initialState,
     reducers: {
         reset: (state) => initialState,
     },
     extraReducers: (builder) => {
         builder
-            .addCase(createGoal.pending, (state) => {
+            .addCase(createPattern.pending, (state) => {
                 state.isLoading = true;
             })
-            .addCase(createGoal.fulfilled, (state, action) => {
+            .addCase(createPattern.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.isSuccess = true;
-                state.goals.push(action.payload)
+                state.isError = false;
+                state.patterns.push(action.payload)
             })
-            .addCase(createGoal.rejected, (state, action) => {
+            .addCase(createPattern.rejected, (state, action) => {
                 state.isLoading = false;
                 state.isError = true;
                 state.message = action.payload;
             })
-            .addCase(getGoals.pending, (state) => {
+            .addCase(getPatterns.pending, (state) => {
                 state.isLoading = true;
             })
-            .addCase(getGoals.fulfilled, (state, action) => {
+            .addCase(getPatterns.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.isSuccess = true;
-                state.goals = action.payload
+                state.patterns = action.payload
             })
-            .addCase(getGoals.rejected, (state, action) => {
+            .addCase(getPatterns.rejected, (state, action) => {
                 state.isLoading = false;
                 state.isError = true;
                 state.message = action.payload;
             })
-            .addCase(deleteGoal.pending, (state) => {
+            .addCase(deletePattern.pending, (state) => {
                 state.isLoading = true;
             })
-            .addCase(deleteGoal.fulfilled, (state, action) => {
+            .addCase(deletePattern.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.isSuccess = true;
-                state.goals = state.goals.filter((goal) => goal._id !== action.payload.id)
+                state.patterns = state.patterns.filter((pattern) => pattern._id !== action.payload.id)
             })
-            .addCase(deleteGoal.rejected, (state, action) => {
+            .addCase(deletePattern.rejected, (state, action) => {
                 state.isLoading = false;
                 state.isError = true;
                 state.message = action.payload;
@@ -103,5 +104,5 @@ export const goalSlice = createSlice({
     }
 })
 
-export const {reset} = goalSlice.actions;
-export default goalSlice.reducer;
+export const {reset} = patternSlice.actions;
+export default patternSlice.reducer;

@@ -7,17 +7,16 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import { createNailPolish } from '../features/nailPolishes/nailPolishSlice';
 
 
 function NailPolishForm() {
     const [nailPolishData, setNailPolishData] = useState({
-        name: '',
         color: '',
         type: '',
     })
 
-    const {name, color, type} = nailPolishData;
+    const {color, type} = nailPolishData;
 
     const dispatch = useDispatch();
 
@@ -30,7 +29,7 @@ function NailPolishForm() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(nailPolishData);
+        dispatch(createNailPolish(nailPolishData))
     };
 
     // color picker state and event handling
@@ -54,7 +53,6 @@ function NailPolishForm() {
         setNailPolishData({
             color: colorPickerState.color,
             type: nailPolishData.type,
-            name: nailPolishData.name
         })
     }
 
@@ -68,15 +66,15 @@ function NailPolishForm() {
     const styles = reactCSS({
         'default': {
           color: {
-            width: '36px',
-            height: '14px',
-            borderRadius: '2px',
+            width: '50px',
+            height: '15px',
+            borderRadius: '10px',
             background: colorPickerState.color,
           },
           swatch: {
             padding: '5px',
             background: '#fff',
-            borderRadius: '1px',
+            borderRadius: '10px',
             boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
             display: 'inline-block',
             cursor: 'pointer',
@@ -99,10 +97,7 @@ function NailPolishForm() {
         <section className="form">
             <form onSubmit={onSubmit}>
                 <div className="nail-polish-form-group">
-                <h2>add a polish</h2>
-                    <label htmlFor='text'>Name</label>
-                    <input type='text' name='name' id='name' value={name} onChange={onChange}/>
-                    
+                <h2>add a polish</h2>                    
                     <label htmlFor='text'>Color</label>
                     <div style={ styles.swatch } onClick={handleClick}>
                         <div style={ styles.color } />
@@ -130,9 +125,9 @@ function NailPolishForm() {
                             <FormControlLabel value="Sparkly" control={<Radio />} label="Sparkly" labelPlacement="bottom"/>
                         </RadioGroup>
                     </FormControl>
-                    <button type="submit" className="btn btn-block">
-            Submit
-          </button>
+                    <button type="submit" className="btn btn-block" onSubmit={onSubmit}>
+                        add polish
+                    </button>
                 </div>
             </form>
         </section>

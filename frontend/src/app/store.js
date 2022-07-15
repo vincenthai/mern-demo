@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from '../features/auth/authSlice';
-import goalReducer from '../features/goals/goalSlice';
+import patternReducer from '../features/patterns/patternSlice';
+import nailPolishReducer from '../features/nailPolishes/nailPolishSlice';
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    goals: goalReducer
+    patterns: patternReducer,
+    nailPolishes: nailPolishReducer
   },
 });

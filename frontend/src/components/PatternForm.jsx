@@ -1,10 +1,10 @@
 import React from 'react'
 import {useState} from 'react'
 import {useDispatch} from 'react-redux'
-import {createGoal} from '../features/goals/goalSlice'
+import {createPattern} from '../features/patterns/patternSlice'
 
 
-function GoalForm() {
+function PatternForm() {
 
     const [text, setText] = useState('');
     const dispatch = useDispatch();
@@ -12,7 +12,7 @@ function GoalForm() {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        dispatch(createGoal({text}));
+        dispatch(createPattern({text}));
         setText('');
     };
 
@@ -20,15 +20,15 @@ function GoalForm() {
         <section className="form">
             <form onSubmit={onSubmit}>
                 <div className="form-group">
-                    <label htmlFor="text">Goal</label>
+                    <label htmlFor="text">pattern</label>
                     <input type="text" name="text" id="text" value={text} onChange={(e) => setText(e.target.value)}/>
                 </div>
                 <div className="form-group">
-                    <button className="btn btn-block" type="submit">Add goal</button>
+                    <button className="btn btn-block" type="submit">add pattern</button>
                 </div>
             </form>
         </section>
     )
 }
 
-export default GoalForm
+export default PatternForm

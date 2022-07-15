@@ -86,20 +86,21 @@ h3 {
   color: #828282;
 }
 
-.goals {
+.patterns {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
 
-.goal {
+.pattern {
   background-color: #f4f4f4;
   margin: 10px 0;
-  padding: 20px 0 10px;
+  padding: 10px 10px 10px;
   position: relative;
+  border-radius: 10px;
 }
 
-.goal .close {
+.pattern .close {
   position: absolute;
   top: 10px;
   right: 15px;
@@ -189,7 +190,26 @@ h3 {
 }
 
 .btn:hover {
-  transform: scale(0.98);
+  transform: scale(0.97);
+}
+
+.btn-del {
+  padding: 5px 10px;
+  border: 1px solid rgb(173, 67, 67);
+  border-radius: 5px;
+  background: rgb(138, 45, 45);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  appearance: button;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-del:hover {
+  transform: scale(0.97);
 }
 
 .loadingSpinnerContainer {

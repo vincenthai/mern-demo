@@ -1,22 +1,22 @@
 import axios from 'axios';
 
-const API_URL = '/api/goals/';
+const API_URL = '/api/patterns/';
 
-// Create goal
-const createGoal = async (goalData, token) => {
+// Create pattern
+const createPattern = async (patternData, token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`
         }
     }
 
-    const response = await axios.post(API_URL, goalData, config);
+    const response = await axios.post(API_URL, patternData, config);
 
     return response.data;
 };
 
-// Get goals
-const getGoals = async (token) => {
+// Get patterns
+const getPatterns = async (token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`
@@ -28,23 +28,23 @@ const getGoals = async (token) => {
     return response.data;
 };
 
-// Delete goal
-const deleteGoal = async (goalId, token) => {
+// Delete pattern
+const deletePattern = async (patternId, token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`
         }
     }
 
-    const response = await axios.delete(API_URL + goalId, config);
+    const response = await axios.delete(API_URL + patternId, config);
 
     return response.data;
 };
 
-const goalService = {
-    createGoal,
-    getGoals,
-    deleteGoal
+const patternService = {
+    createPattern,
+    getPatterns,
+    deletePattern
 }
 
-export default goalService;
+export default patternService;
