@@ -14,7 +14,6 @@ const initialState = {
 export const createNailPolish = createAsyncThunk('nailPolishes/create', async (nailPolishData, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token;
-        console.log(nailPolishData);
         return await nailPolishService.createNailPolish(nailPolishData, token);
     }
     catch (error) {

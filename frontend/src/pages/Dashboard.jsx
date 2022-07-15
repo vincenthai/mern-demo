@@ -46,42 +46,44 @@ function Dashboard() {
         <h1>hey {user && user.name}</h1>
         <p>let's get you polished</p>
       </section>
-      
 
-      <NailPolishForm/>
+      <div className="main-container">
+        <div className='child-container'>
+          <PatternForm/>
+          <section className="content">
+            {patterns.length > 0 ?
+            (
+              <div className="patterns">
+                {patterns.map((pattern) => (
+                  <PatternItem key={pattern._id} pattern={pattern} />
+                ))}
+              </div>
+            ) : 
+            (
+              <h3>so unimaginative</h3>
+            )
+            }
+          </section>
+        </div>
 
-      <PatternForm/>
-
-      <section className="content">
-        {patterns.length > 0 ?
-         (
-          <div className="patterns">
-            {patterns.map((pattern) => (
-              <PatternItem key={pattern._id} pattern={pattern} />
-            ))}
+        <div className='child-container'>
+          <NailPolishForm/>
+          <section className="content">
+            {nailPolishes.length > 0 ?
+            (
+              <div className="polishes">
+                {nailPolishes.map((nailPolish) => (
+                  <NailPolishItem key={nailPolish._id} nailPolish={nailPolish} />
+                ))}
+              </div>
+            ) : 
+            (
+              <h3>go buy some nail polish</h3>
+            )
+            }
+          </section>
           </div>
-         ) : 
-         (
-          <h3>so unimaginative</h3>
-         )
-        }
-      </section>
-
-      <section className="content">
-        {nailPolishes.length > 0 ?
-         (
-          <div className="patterns">
-            {nailPolishes.map((nailPolish) => (
-              <NailPolishItem key={nailPolish._id} nailPolish={nailPolish} />
-            ))}
-          </div>
-         ) : 
-         (
-          <h3>go buy some nail polish</h3>
-         )
-        }
-      </section>
-      
+        </div>
     </>
   )
 }

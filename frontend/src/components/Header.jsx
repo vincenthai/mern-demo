@@ -3,6 +3,7 @@ import {FaSignInAlt, FaSignOutAlt, FaUser} from 'react-icons/fa';
 import {Link, useNavigate} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import {logout, reset} from '../features/auth/authSlice';
+import {FaPaintBrush} from 'react-icons/fa';
 
 function Header() {
     const navigate = useNavigate();
@@ -19,7 +20,10 @@ function Header() {
     return (
         <header className='header'>
             <div className="logo">
-                <Link to='/'>polish.me</Link>
+                <Link to='/'>
+                    choose my <FaPaintBrush/>
+                </Link>
+
             </div>
             <ul>
                 {user ? (

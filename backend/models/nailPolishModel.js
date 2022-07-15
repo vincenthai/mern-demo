@@ -12,7 +12,7 @@ const nailPolishSchema = mongoose.Schema({
     },
     type: {
         type: String,
-        enum: ['Sparkly', 'Cream', 'Gelly'],
+        enum: ['sparkly', 'cream', 'jelly'],
         required: [true, 'Select a type'],
     },
 }, {

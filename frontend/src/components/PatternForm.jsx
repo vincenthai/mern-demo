@@ -20,8 +20,9 @@ function PatternForm() {
         <section className="form">
             <form onSubmit={onSubmit}>
                 <div className="form-group">
+                    <h2>add a pattern</h2>     
                     <label htmlFor="text">pattern</label>
-                    <input type="text" name="text" id="text" value={text} onChange={(e) => setText(e.target.value)}/>
+                    <input type="text" className="textbox" name="text" id="text" value={text} onChange={(e) => setText(e.target.value)}/>
                 </div>
                 <div className="form-group">
                     <button className="btn btn-block" type="submit">add pattern</button>

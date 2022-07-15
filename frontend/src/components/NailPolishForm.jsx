@@ -67,13 +67,13 @@ function NailPolishForm() {
         'default': {
           color: {
             width: '50px',
-            height: '15px',
+            height: '18px',
             borderRadius: '10px',
             background: colorPickerState.color,
           },
           swatch: {
-            padding: '5px',
-            background: '#fff',
+            padding: '4px',
+            background: '#d7eaf3',
             borderRadius: '10px',
             boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
             display: 'inline-block',
@@ -98,7 +98,7 @@ function NailPolishForm() {
             <form onSubmit={onSubmit}>
                 <div className="nail-polish-form-group">
                 <h2>add a polish</h2>                    
-                    <label htmlFor='text'>Color</label>
+                    <label htmlFor='text'>color</label> 
                     <div style={ styles.swatch } onClick={handleClick}>
                         <div style={ styles.color } />
                     </div>
@@ -111,7 +111,7 @@ function NailPolishForm() {
                         ): null
                     }
                     <br/>
-                    <label htmlFor='text'>Type</label>
+                    <label htmlFor='text'>type</label>
                     <FormControl>
                         <RadioGroup
                             row
@@ -120,9 +120,9 @@ function NailPolishForm() {
                             value={type}
                             onChange={onChange}
                         >
-                            <FormControlLabel value="Cream" control={<Radio />} label="Cream" labelPlacement="bottom" />
-                            <FormControlLabel value="Gelly" control={<Radio />} label="Gelly" labelPlacement="bottom" />
-                            <FormControlLabel value="Sparkly" control={<Radio />} label="Sparkly" labelPlacement="bottom"/>
+                            <FormControlLabel value="cream" control={<Radio />} label="cream" labelPlacement="bottom" />
+                            <FormControlLabel value="jelly" control={<Radio />} label="jelly" labelPlacement="bottom" />
+                            <FormControlLabel value="sparkly" control={<Radio />} label="sparkly" labelPlacement="bottom"/>
                         </RadioGroup>
                     </FormControl>
                     <button type="submit" className="btn btn-block" onSubmit={onSubmit}>
