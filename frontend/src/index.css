@@ -135,6 +135,29 @@ h3 {
   margin: 0 0 5px 3px;
 }
 
+.nail-polish-form-group {
+  margin-bottom: 10px;
+  display: inline-block;
+  gap: 5px;
+}
+
+.nail-polish-form-group input,
+.nail-polish-form-group textarea,
+.nail-polish-form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-family: inherit;
+}
+
+.nail-polish-form-group label {
+  text-align: left;
+  display: block;
+  margin: 0 0 5px 3px;
+}
+
 .btn {
   padding: 10px 20px;
   border: 1px solid #000;
