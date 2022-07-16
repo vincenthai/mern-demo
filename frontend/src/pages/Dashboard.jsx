@@ -10,6 +10,7 @@ import NailPolishForm from '../components/NailPolishForm';
 import { getNailPolishes } from '../features/nailPolishes/nailPolishSlice';
 import PatternItem from '../components/PatternItem';
 import NailPolishItem from '../components/NailPolishItem';
+import Randomizer from '../components/Randomizer';
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -47,6 +48,7 @@ function Dashboard() {
         <p>let's get you polished</p>
       </section>
 
+      <Randomizer/>
       <div className="main-container">
         <div className='child-container'>
           <PatternForm/>

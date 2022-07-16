@@ -72,7 +72,8 @@ h3 {
 }
 
 .header ul li a:hover {
-  color: #d7eaf3;
+  color: #14397d;
+  transform: scale(0.98);
 }
 
 .header ul li a svg {
@@ -131,6 +132,7 @@ h3 {
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
 }
+
 .polish {
   background-color: #d7eaf3;
   margin: 10px 0;
@@ -235,7 +237,7 @@ h3 {
 }
 
 .btn:hover {
-  transform: scale(0.97);
+  transform: scale(0.98);
 }
 
 .btn-del {
@@ -254,7 +256,7 @@ h3 {
 }
 
 .btn-del:hover {
-  transform: scale(0.97);
+  transform: scale(0.98);
 }
 
 .loadingSpinnerContainer {
@@ -283,6 +285,42 @@ h3 {
   outline: none !important;
   border: 1px dotted #77b5d9;
   box-shadow: 0 0 10px #77b5d9;
+}
+
+.btn-rdm {
+  padding: 10px 10px 2px 10px;
+  border: 1px solid #14397d;
+  border-radius: 20px;
+  background: #14397d;
+  color:#d7eaf3;
+  font-size: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  appearance: button;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-rdm-block {
+  width: 25%;
+  margin-bottom: 75px;
+}
+
+.btn-rdm:hover {
+  transform: scale(0.98);
+}
+
+.icon {
+  color: #14397d;
+  font-size: 23px;
+}
+
+.randomizer {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
 }
 
 @keyframes spin {

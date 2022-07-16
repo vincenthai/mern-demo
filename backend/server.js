@@ -23,6 +23,8 @@ app.use('/api/users/', require('./routes/userRoutes'));
 app.use('/api/nail-polish', require('./routes/nailPolishRoutes'));
 // Routes for patterns
 app.use('/api/patterns', require('./routes/patternRoutes'));
+// Routes for the randomizer
+app.use('/api/randomize', require('./routes/randomizerRoutes'));
 
 // Serve frontend
 if (process.env.NODE_ENV === 'production') {

@@ -14,7 +14,6 @@ const getNailPolishes = asyncHandler(async (req, res) => {
 // @route	POST /api/nail-polish
 // @access	Private
 const addNailPolish = asyncHandler(async (req, res) => {
-	console.log(req.body);
 	if (!req.body.color || !req.body.type) {
 		res.status(400);
 		throw new Error('Please make sure you supplied all required fields');

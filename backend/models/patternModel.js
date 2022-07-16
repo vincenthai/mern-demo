@@ -9,7 +9,6 @@ const patternSchema = mongoose.Schema({
     text: {
 		type: String,
 		required: [true, 'Please add a pattern text'],
-        unique: true,
 	},
 }, {
 	timestamps: true,
