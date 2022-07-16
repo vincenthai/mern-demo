@@ -21,13 +21,14 @@ function Randomizer() {
     const handleOpen = () => setOpen(true);
     const dispatch = useDispatch();
     const {polish, pattern, isLoading, isSuccess} = useSelector((state) => state.polishCombo);
+    const {patterns} = useSelector((state) => state.patterns);
+    const {nailPolishes} = useSelector((state => state.nailPolishes));
 
     const handleClose = () => {
         setOpen(false);
         dispatch(reset());
     }
 
-    
     const style = {
         position: 'relative',
         top: '50%',
@@ -43,8 +44,9 @@ function Randomizer() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log({type});
-        dispatch(getRandomPolishCombo({type}));
+        if(nailPolishes.length > 0 || patterns > 0) {
+            dispatch(getRandomPolishCombo({type}));
+        }
     };
 
     const onChange = (e) => {
@@ -77,8 +79,15 @@ function Randomizer() {
                     <Fade in={isSuccess}>
                         <Box sx={style}>
                             <center>
-                                <ChosenPatternItem key={pattern._id} pattern={pattern} />
-                                <ChosenNailPolishItem key={polish._id} nailPolish={polish} />
+                                { nailPolishes.length === 0 || patterns === 0 ? (
+                                    <h1>add some stuff first</h1>
+                                ) : 
+                                (
+                                    <>
+                                        <ChosenPatternItem key={pattern._id} pattern={pattern} />
+                                        <ChosenNailPolishItem key={polish._id} nailPolish={polish} />
+                                    </>
+                                )}
                             </center>
                         </Box>
                     </Fade>
